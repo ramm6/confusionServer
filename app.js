@@ -12,7 +12,10 @@ var leaderRouter = require('./routes/leaderRouter');
 
 const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
+
 const Dishes = require('./models/dishes');
+const Promotions = require('./models/promotions');
+const Leaders = require('./models/leaders');
 
 const dbUrl = 'mongodb://testuser:password@ds133558.mlab.com:33558/testapp';
 const conn = mongoose.connect(dbUrl);
