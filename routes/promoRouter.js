@@ -45,6 +45,7 @@ promoRouter.route('/')
 
 promoRouter.route('/:promoId/')
     .get((req, res, next) => {
+        console.log(req.params.promoId);
         Promotions.findById(req.params.promoId)
         .then((promo) => {
             if (promo != null) {
