@@ -7,6 +7,7 @@ var session = require('express-session');
 var FileStore = require('session-file-store')(session);
 var passport = require('passport');
 var authenticate = require('./authenticate');
+var config = require('./config');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -21,7 +22,7 @@ const Dishes = require('./models/dishes');
 const Promotions = require('./models/promotions');
 const Leaders = require('./models/leaders');
 
-const dbUrl = 'mongodb://testuser:password@ds133558.mlab.com:33558/testapp';
+const dbUrl = config.mongoUrl;
 const conn = mongoose.connect(dbUrl);
 
 conn.then((db) => {
