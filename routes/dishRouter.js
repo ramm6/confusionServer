@@ -11,6 +11,7 @@ const dishRouter = express.Router();
     dishRouter.route('/')
     .get((req, res, next) => {
         Dishes.find({})
+            .populate('comments.author')
             .then((dish) => {
                 res.statusCode = 200;
                 res.setHeader('Content-Type', 'application/json');
@@ -48,6 +49,7 @@ const dishRouter = express.Router();
     dishRouter.route('/:dishId')
         .get((req, res, next) => {
             Dishes.findById(req.params.dishId)
+                .populate('comments.author')
                 .then((dish) => {
                     res.statusCode = 200;
                     res.setHeader('Content-Type', 'application/json');
@@ -83,6 +85,7 @@ const dishRouter = express.Router();
     dishRouter.route('/:dishId/comments')
     .get((req, res, next) => {
         Dishes.findById(req.params.dishId)
+            .populate('comments.author')
             .then((dish) => {
                 if (dish != null) {
                     res.statusCode = 200;
@@ -103,6 +106,7 @@ const dishRouter = express.Router();
         Dishes.findById(req.params.dishId)
             .then((dish) => {
                 if (dish != null) {
+                    req.body.author = req.user._id;
                     dish.comments.push(req.body);
                     dish.save()
                     .then((dish) => {
@@ -148,6 +152,7 @@ const dishRouter = express.Router();
 dishRouter.route('/:dishId/comments/:commentId')
         .get((req, res, next) => {
             Dishes.findById(req.params.dishId)
+                .populate('comments.author')
                 .then((dish) => {
                     if (dish != null && dish.comments.id(req.params.commentId) != null) {
                         res.statusCode = 200;
