@@ -42,33 +42,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 //app.use(cookieParser('MY-SECRET-KEY'));
 
-app.use(session({
-    name: "session-id",
-    secret: 'MY-SECRET-KEY',
-    saveUnInitialized: false,
-    resave: false,
-    store: new FileStore()
-}));
-
 app.use(passport.initialize());
-app.use(passport.session());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-
-function auth(req, res, next) {
-    console.log(req.session);
-    if (!req.user) {
-        var err = new Error('You are not authenticated');
-        res.setHeader('WWW-Authenticate', 'Basic');
-        err.status = 403;
-        return next(err);
-    } else {
-        next();
-    }
-}
-
-app.use(auth);
 
 app.use(express.static(path.join(__dirname, 'public')));
 
