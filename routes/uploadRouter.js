@@ -15,9 +15,8 @@ var storage = multer.diskStorage({
 const imageFileFilter = (req, file, cb) => {
     if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/)) {
         return cb(new Error("You can upload only image files!"));
-    } else {
-        cb(null, true);
     }
+    cb(null, true);
 };
 
 const upload = multer({ storage: storage, fileFilter: imageFileFilter });
@@ -30,7 +29,10 @@ uploadRouter.route('/')
         res.statusCode = 403;
         res.end('GET operation is not supported on /imageUpload');
     })
-    .post(authenticate.verifyUser, authenticate.verifyAdmin, upload.single('imageFile'), (req, res, next) => {
+    .post(authenticate.verifyUser, authenticate.verifyAdmin, upload.single('imageFile'), (req, res) => {
+        console.log(req.file);
+        console.log(req.body.name);
+        console.log(req.body.password);
         res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json');
         res.json(req.file);
@@ -43,3 +45,4 @@ uploadRouter.route('/')
         res.statusCode = 403;
         res.end('DELETE operation is not supported on /imageUpload');
     });
+module.exports = uploadRouter;
