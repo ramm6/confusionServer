@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
+    "\\public",
     "\\routes"
   ],
-  "SelectedNode": "\\app.js",
+  "SelectedNode": "\\routes\\cors.js",
   "PreviewInSolutionExplorer": false
 }
