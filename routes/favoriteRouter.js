@@ -55,7 +55,7 @@ favoriteRouter.route('/')
                         .then((favorite) => {
                             res.statusCode = 200;
                             res.setHeader('Content-Type','application/json');
-                            res.json(favorites);
+                            res.json(favorite);
                         }, (err)=>{ next(err); })
                     }, (err)=>{ next(err); })
                     .catch((err) => { next(err); });
@@ -68,7 +68,8 @@ favoriteRouter.route('/')
         return next(err);
     })
     .delete(cors.cors, authenticate.verifyUser, (req, res, next) => {
-        Favorites.remove({userId: req.user._id}, (response) => {
+        Favorites.remove({userId: req.user._id})
+        .then((response) => {
             res.statusCode = 200;
             res.setHeader('Content-Type', 'application/json');
             res.json(response);
