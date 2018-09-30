@@ -83,14 +83,14 @@
       ]
     },
     {
-        "name": "Vadonut",
-        "image": "images/vadonut.png",
-        "category": "appetizer",
-        "label": "New",
-        "price": "1.99",
-        "featured": "false",
-        "description": "A quintessential ConFusion experience, is it a vada or is it a donut?",
-        "comments": [
+      "name": "Vadonut",
+      "image": "images/vadonut.png",
+      "category": "appetizer",
+      "label": "New",
+      "price": "1.99",
+      "featured": "false",
+      "description": "A quintessential ConFusion experience, is it a vada or is it a donut?",
+      "comments": [
         {
           "rating": 5,
           "comment": "Imagine all the eatables, living in conFusion!",
@@ -169,7 +169,7 @@
     {
       "name": "Weekend Grand Buffet",
       "image": "images/buffet.png",
-      "label": "",
+      "label": "New",
       "price": "19.99",
       "featured": "true",
       "description": "Featuring mouthwatering combinations with a choice of five different salads, six enticing appetizers, six main entrees and five choicest desserts. Free flowing bubbly and soft drinks. All for just $19.99 per person "
@@ -210,31 +210,4 @@
     }
   ],
   "feedback": []
-},
-
-[
-  {
-      "firstname": "Rammohana rao",
-      "lastname": "Balaga",
-      "admin": true,
-      "_id": "5ba7cd399362e5168850175e",
-      "username": "admin",
-      "__v": 0
-  },
-  {
-      "firstname": "Vinay",
-      "lastname": "Ganteda",
-      "admin": false,
-      "_id": "5baae419fdfe791260503db7",
-      "username": "vinay",
-      "__v": 0
-  },
-  {
-      "firstname": "Rammohana rao",
-      "lastname": "Balaga",
-      "admin": false,
-      "_id": "5baae42efdfe791260503db8",
-      "username": "ram",
-      "__v": 0
-  }
-]
+}
